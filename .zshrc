@@ -1,1 +1,2 @@
-source .aliases
+source ~/.aliases
+source ~/.functions

@@ -1,0 +1,84 @@
+# Functions
+
+## Utility
+join_by() { local IFS="$1"; shift; echo "$*"; }
+
+## Docker
+
+### Remove all Docker containers
+drm() { docker rm -f $(docker ps -a -q) }
+
+### Docker
+d() { 
+	local IMAGE=""
+	local SYNC="consistent"
+	local PORT_MAPPINGS=()
+	local PORTS=""
+	local COMMAND=""
+
+	while getopts ":i:p:s:" option ; do
+		case "$option" in
+			i ) # Image
+				IMAGE="$OPTARG"
+				;;
+			p ) # Port number
+				PORT_MAPPINGS+="$OPTARG"
+				;;
+			s ) # Volume Sync method
+				SYNC="$OPTARG"
+				;;
+		esac
+	done
+
+	# Remove all flagged arguments
+	shift "$((OPTIND-1))"
+
+	# Set the rest of arguments as the command
+	COMMAND=$*
+
+	# Retrieve Port mappings
+	for mapping in "${PORT_MAPPINGS[@]}"; do
+		PORTS+="-p $mapping "
+	done
+
+	# Check if image is specified
+	if [ -z $IMAGE ]; then
+		echo "No image specified"
+		exit 1
+	fi
+
+        # Check if command is specified
+        if [ -z $COMMAND ]; then
+                echo "No command specified"
+                exit 1
+        fi
+
+	echo "Image: $IMAGE"
+	echo "Port Mappings:" $(join_by " " "$PORT_MAPPINGS[@]")
+	echo "Volume Sync Method: $SYNC"
+	echo "Command: $COMMAND"
+
+	eval "docker run --rm -it -v $(pwd):/main/:$SYNC -w /main/ $PORTS $IMAGE $COMMAND"
+}
+
+dyarn() {
+	local PORT=3000
+	local COMMAND=""
+
+        while getopts ":p:" option ; do
+                case "$option" in
+                        p ) # Port number
+                                PORT="$OPTARG"
+                                ;;
+                esac
+        done
+
+        # Remove all flagged arguments
+        shift "$((OPTIND-1))"
+
+        # Set the rest of arguments as the command
+        COMMAND=$*
+	
+	eval "d -i node -p $PORT:3000 -s delegated yarn $*"	
+}
+

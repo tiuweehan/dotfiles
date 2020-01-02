@@ -1,6 +1,2 @@
 # Aliases
 
-## Docker
-
-### Remove all Docker containers
-drm() { docker rm -f $(docker ps -a -q) }
