@@ -5,10 +5,13 @@ join_by() { local IFS="$1"; shift; echo "$*"; }
 
 ## Docker
 
+### Enter docker container
+dex() { docker exec -it $1 /bin/bash }
+
 ### Remove all Docker containers
 drm() { docker rm -f $(docker ps -a -q) }
 
-### Docker
+### Dockerize
 d() { 
 	local IMAGE=""
 	local SYNC="consistent"
