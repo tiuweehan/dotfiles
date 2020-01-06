@@ -1,3 +1,9 @@
 # Aliases
-source ~/.zsh/dir-aliases
 
+if [ -f ~/.zsh/dir-aliases ]; then
+  source ~/.zsh/dir-aliases
+fi
+
+if [ -f ~/.temporary/dir-aliases ]; then
+  source ~/.temporary/dir-aliases
+fi
