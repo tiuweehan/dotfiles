@@ -1,0 +1,23 @@
+# General
+alias cdd="cd ~/Desktop"
+alias cda="cd ~/Desktop/Archive"
+alias cddd="cd ~/Desktop/Docker"
+alias cdm="cd ~/Desktop/Modules"
+alias cdp="cd ~/Desktop/Projects"
+alias cdv="cd ~/Desktop/Vagrant"
+
+# Modules
+# Taking
+alias 2106="cd ~/Desktop/Modules/Y2S2/CS2106"
+alias 2107="cd ~/Desktop/Modules/Y2S2/CS2107"
+alias 2108="cd ~/Desktop/Modules/Y2S2/MA2108"
+alias 3281="cd ~/Desktop/Modules/Y2S2/CS3281"
+alias 3282="cd ~/Desktop/Modules/Y2S2/CS3282"
+alias 3131="cd ~/Desktop/Modules/Y2S2/ST3131"
+
+# Teaching / Others
+alias 2040="cd ~/Desktop/Modules/Y2S2/CS2040S"
+alias 2103="cd ~/Desktop/Modules/Y2S2/CS2103T"
+alias cvwo="cd ~/Desktop/Projects/cvwo"
+alias 3107="cvwo"
+
