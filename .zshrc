@@ -1,4 +1,5 @@
-source ~/.zsh/zshconfig
+source ~/.zsh/config
 source ~/.zsh/aliases
 source ~/.zsh/functions
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/syntax
+source ~/.zsh/prompt
