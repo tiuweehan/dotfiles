@@ -4,6 +4,6 @@ if [ -f ~/.zsh/dir-aliases ]; then
   source ~/.zsh/dir-aliases
 fi
 
-if [ -f ~/.temporary/dir-aliases ]; then
-  source ~/.temporary/dir-aliases
+if [ -f ~/.temporary/aliases ]; then
+  source ~/.temporary/aliases
 fi
