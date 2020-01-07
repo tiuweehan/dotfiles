@@ -2,7 +2,7 @@
 setopt prompt_subst
 
 # Set Git prompt to use haskell stack for better performance
-if [ -f /Users/tiuweehan/.zsh/zsh-git-prompt/src/.bin/gitstatus ]; then
+if [ -f ~/.zsh/zsh-git-prompt/src/.bin/gitstatus ]; then
   GIT_PROMPT_EXECUTABLE="haskell"
 fi
 
