@@ -1,0 +1,4 @@
+if [ -f ~/.temporary/path ]; then
+  source ~/.temporary/path
+fi
+

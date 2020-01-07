@@ -1,3 +1,4 @@
+source ~/.zsh/path
 source ~/.zsh/config
 source ~/.zsh/aliases
 source ~/.zsh/functions
