@@ -1,3 +1,4 @@
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 source ~/.zsh/path
 source ~/.zsh/config
 source ~/.zsh/aliases
