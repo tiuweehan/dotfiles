@@ -1,5 +1,1 @@
 # Aliases
-
-if [ -f ~/.temporary/aliases ]; then
-  source ~/.temporary/aliases
-fi
