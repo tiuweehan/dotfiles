@@ -2,6 +2,23 @@
 
 ## Setup
 
+### Quick Setup
+
+- With Haskell Stack
+```
+git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'; dot checkout; ~/.zsh/zsh-git-prompt/haskell-setup.sh
+```
+
+- Without Haskell Stack
+```
+git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'; dot checkout
+```
+
+&nbsp;
+&nbsp;
+
+### Detailed Setup
+
 1. Clone this repo as a bare-bones repo into `$HOME/.dotfiles`
 ```
 git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles
