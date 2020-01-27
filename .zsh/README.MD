@@ -44,6 +44,10 @@ Ensure that [haskell-stack](https://docs.haskellstack.org/en/stable/README/) is 
 
 &nbsp;
 
+4. Open a new zsh terminal
+
+**Vertification:** `dot status` should be a valid command
+
 ## References
 
 https://www.atlassian.com/git/tutorials/dotfiles \
