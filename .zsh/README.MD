@@ -6,12 +6,12 @@
 
 - With Haskell Stack
 ```
-git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'; dot checkout; ~/.zsh/zsh-git-prompt/haskell-setup.sh
+git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout; ~/.zsh/zsh-git-prompt/haskell-setup.sh;
 ```
 
 - Without Haskell Stack
 ```
-git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'; dot checkout
+git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout;
 ```
 
 &nbsp;
@@ -27,23 +27,15 @@ git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles
 
 &nbsp;
 
-2.  Create a temporary `dot` command with the git directory in `$HOME/.dotfiles` but a work tree in the `$HOME` directory.
+2. Checkout the files to the `$HOME` directory
 ```
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-```
-**Vertification:** `dot status` should be a valid command
-
-&nbsp;
-
-3. Checkout the files to the `$HOME` directory
-```
-dot checkout
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout
 ```
 **Vertification:** `.zshrc`, `.gitconfig`, `.gitignore` and `.zsh/` should be in `$HOME`
 
 &nbsp;
 
-4. (Optional) For better performance, use Haskell for retrieving information about git.\
+3. (Optional) For better performance, use Haskell for retrieving information about git.\
 Ensure that [haskell-stack](https://docs.haskellstack.org/en/stable/README/) is installed before attempting this.
 ```
 ~/.zsh/zsh-git-prompt/haskell-setup.sh
