@@ -4,14 +4,14 @@
 
 ### Quick Setup
 
-- With Haskell Stack
+- **HTTP**
 ```
-git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout; ~/.zsh/zsh-git-prompt/haskell-setup.sh;
+git clone --bare https://github.com/tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout; if type "stack" > /dev/null; then ~/.zsh/zsh-git-prompt/haskell-setup.sh; fi
 ```
 
-- Without Haskell Stack
+- **SSH**
 ```
-git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout;
+git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout; if type "stack" > /dev/null; then ~/.zsh/zsh-git-prompt/haskell-setup.sh; fi
 ```
 
 &nbsp;
