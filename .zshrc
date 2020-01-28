@@ -33,12 +33,17 @@ dot-destruct() {
     rm -rf ~/.localrc
   fi
 
+  # Remove all dotfiles
   for file in $DOT_FILES; do
     rm -rf $file
   done
 
+  # Remove dot commands
   unalias dot
   unset -f dot-destruct
+
+  # Restart Shell
+  exec $SHELL
 }
 
 for file in $SOURCE_FILES; do

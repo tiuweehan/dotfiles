@@ -6,12 +6,12 @@
 
 - **HTTP**
 ```
-git clone --bare https://github.com/tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout; if type "stack" > /dev/null; then ~/.zsh/zsh-git-prompt/haskell-setup.sh; fi
+git clone --bare https://github.com/tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout; if type "stack" > /dev/null; then ~/.zsh/zsh-git-prompt/haskell-setup.sh; fi; exec $SHELL;
 ```
 
 - **SSH**
 ```
-git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout; if type "stack" > /dev/null; then ~/.zsh/zsh-git-prompt/haskell-setup.sh; fi
+git clone --bare git@github.com:tiuweehan/dotfiles.git $HOME/.dotfiles; git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout; if type "stack" > /dev/null; then ~/.zsh/zsh-git-prompt/haskell-setup.sh; fi; exec $SHELL;
 ```
 
 &nbsp;
