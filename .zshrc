@@ -1,6 +1,7 @@
 DOT_FILES=(
   ~/.gitconfig
   ~/.gitignore
+  ~/.tmux.conf
   ~/.vimrc
   ~/.zshrc
   ~/.zsh/
