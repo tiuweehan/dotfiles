@@ -49,3 +49,7 @@ lfcd () {
 bindkey -s '^o' 'lfcd\n'
 
 disable r
+
+# Default Editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
