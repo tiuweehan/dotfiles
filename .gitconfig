@@ -24,6 +24,10 @@
   # List contributors with number of commits
   contributors = shortlog --summary --numbered
 
+  # Remove all git ignored files
+  purge = clean -xdf
+
+
 [help]
 
   # Automatically correct and execute mistyped commands
