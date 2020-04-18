@@ -19,9 +19,22 @@ SOURCE_FILES=(
   ~/.localrc  
 ) 
 
-alias dot="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+dot() {
+  case $1 in
+  destruct)
+    _dot-destruct
+    ;;
+  *)
+    local command="$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+    for var in "$@"; do
+      command="$command \"$var\""
+    done
+    eval $command
+    ;;
+  esac
+}
 
-dot-destruct() {
+_dot-destruct() {
   # Confirm destruct action
   read "response?Are you sure you want to delete your dotfiles? [yY/n] "
   if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
@@ -41,7 +54,7 @@ dot-destruct() {
 
   # Remove dot commands
   unalias dot
-  unset -f dot-destruct
+  unset -f _dot-destruct
 
   # Restart Shell
   exec $SHELL
