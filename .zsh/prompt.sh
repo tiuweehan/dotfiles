@@ -24,3 +24,16 @@ TRAPALRM() {
   redraw_tmout
 }
 
+function preexec() {
+  __timer=$(($(print -P %D{%s%6.})/1000))
+}
+
+function precmd() {
+  if [ $__timer ]; then
+    __now=$(($(print -P %D{%s%6.})/1000))
+    __elapsed=$(($__now-$__timer))
+
+    export RPROMPT="%F{cyan}${__elapsed}ms %{$reset_color%}"
+    unset __timer
+  fi
+}
