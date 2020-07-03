@@ -22,7 +22,15 @@ SOURCE_FILES=(
   ~/.zsh/syntax
   ~/.zsh/prompt
   ~/.zsh/keyboard
-  ~/.localrc  
+  ~/.localrc
+  ~/.zsh/path.sh
+  ~/.zsh/config.sh
+  ~/.zsh/aliases.sh
+  ~/.zsh/functions.sh
+  ~/.zsh/syntax.sh
+  ~/.zsh/prompt.sh
+  ~/.zsh/keyboard.sh
+  ~/.localrc.sh
 ) 
 
 dot() {
