@@ -16,7 +16,11 @@ PS1='%{$fg[cyan]%}[%D{%H:%M:%S}] %(?.%F{green}√.%F{red}?%?)%f %B%{$fg[green]%}
 # Reset the prompt when a command is entered for accurate timestamp
 TMOUT=1
 
+redraw_tmout() {
+  [ "$WIDGET" = "expand-or-complete" ] && [[ "$_lastcomp[insert]" =~ "^automenu$|^menu:" ]] || zle reset-prompt
+}
+
 TRAPALRM() {
-  zle reset-prompt
+  redraw_tmout
 }
 
