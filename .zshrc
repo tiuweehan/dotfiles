@@ -2,6 +2,8 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
+TERM=screen-256color-bce
+
 DOT_FILES=(
   ~/.gitconfig
   ~/.gitignore
