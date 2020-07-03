@@ -23,9 +23,6 @@ compinit
 
 _comp_options+=(globdots)		# Include hidden files.
 
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
 # Default Editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
