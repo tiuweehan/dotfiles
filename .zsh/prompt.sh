@@ -18,7 +18,7 @@ TMOUT=1
 
 redraw_tmout() {
     case "$WIDGET" in
-        expand-or-complete|up-line-or-beginning-search|down-line-or-beginning-search|.history-incremental-search-backward|.history-incremental-search-forward)
+            expand-or-complete|self-insert|up-line-or-beginning-search|down-line-or-beginning-search|backward-delete-char|.history-incremental-search-backward|.history-incremental-search-forward)
             :
             ;;
 
