@@ -17,7 +17,15 @@ PS1='%{$fg[cyan]%}[%D{%H:%M:%S}] %(?.%F{green}√.%F{red}?%?)%f %B%{$fg[green]%}
 TMOUT=1
 
 redraw_tmout() {
-  [ "$WIDGET" = "expand-or-complete" ] && [[ "$_lastcomp[insert]" =~ "^automenu$|^menu:" ]] || zle reset-prompt
+    case "$WIDGET" in
+        expand-or-complete|up-line-or-beginning-search|down-line-or-beginning-search|.history-incremental-search-backward|.history-incremental-search-forward)
+            :
+            ;;
+
+        *)
+            zle reset-prompt
+            ;;
+    esac
 }
 
 TRAPALRM() {
