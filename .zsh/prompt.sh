@@ -1,13 +1,9 @@
 # Set prompt to reevaluate prompt string
 setopt prompt_subst
 
-# Set Git prompt to use haskell stack for better performance
-if [ -f ~/.zsh/zsh-git-prompt/src/.bin/gitstatus ]; then
-  GIT_PROMPT_EXECUTABLE="haskell"
-fi
-
 # Source Git prompt
-source ~/.zsh/zsh-git-prompt/zshrc.sh 
+source ~/.zsh/zsh-git-prompt/git-prompt.zsh 
+ZSH_GIT_PROMPT_FORCE_BLANK=1
 
 # Set prompt (Use single quotes to reload PS1 before every prompt)
 # Timestamp
@@ -23,7 +19,7 @@ PS1="$PS1 "'%B%{$fg[green]%}%n'
 PS1="$PS1 "'%{$fg[blue]%}%~%{$reset_color%}'
 
 # Git status
-PS1="$PS1 "'$(git_super_status)'
+PS1="$PS1 "'$(gitprompt)'
 
 # Prompt
 PS1="$PS1 "'%# '
