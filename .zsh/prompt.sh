@@ -22,7 +22,7 @@ PS1="$PS1 "'%{$fg[blue]%}%~%{$reset_color%}'
 PS1="$PS1 "'$(gitprompt)'
 
 # Prompt
-PS1="$PS1 "'%# '
+PS1="$PS1"'%# '
 
 redraw_tmout() {
     case "$WIDGET" in
