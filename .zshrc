@@ -1,21 +1,26 @@
+DOT_ROOT_DIR=$HOME
+DOT_REPO_DIR=$DOT_ROOT_DIR/.dotfiles
+DOT_CONFIG_DIR=$DOT_ROOT_DIR/.dotconfig
+DOT_CONFIG_ZSH_DIR=$DOT_CONFIG_DIR/zsh
+
 DOT_FILES=(
-  ~/.gitconfig
-  ~/.gitignore
-  ~/.tmux.conf
-  ~/.vimrc
-  ~/.zshrc
-  ~/.zsh/
-  ~/.dotfiles/
+  $DOT_ROOT_DIR/.gitconfig
+  $DOT_ROOT_DIR/.gitignore
+  $DOT_ROOT_DIR/.tmux.conf
+  $DOT_ROOT_DIR/.vimrc
+  $DOT_ROOT_DIR/.zshrc
+  $DOT_CONFIG_ZSH_DIR/
+  $DOT_REPO_DIR/
 )
 
 SOURCE_FILES=(
-  ~/.localrc
-  ~/.zsh/config.sh
-  ~/.zsh/utilities.sh
-  ~/.zsh/syntax.sh
-  ~/.zsh/prompt.sh
-  ~/.zsh/keyboard.sh
-  ~/.localrc.sh
+  $DOT_ROOT_DIR/.localrc
+  $DOT_CONFIG_ZSH_DIR/config.sh
+  $DOT_CONFIG_ZSH_DIR/utilities.sh
+  $DOT_CONFIG_ZSH_DIR/syntax.sh
+  $DOT_CONFIG_ZSH_DIR/prompt.sh
+  $DOT_CONFIG_ZSH_DIR/keyboard.sh
+  $DOT_ROOT_DIR/.localrc.sh
 ) 
 
 dot() {
@@ -43,7 +48,7 @@ _dot-destruct() {
   # Check if should delete .localrc
   read "response?Do you want to delete .localrc? [yY/n] "
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    rm -rf ~/.localrc
+    rm -rf $DOT_ROOT_DIR/.localrc
   fi
 
   # Remove all dotfiles
