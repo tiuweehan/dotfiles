@@ -1,6 +1,6 @@
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export CLICOLOR=1
 export LSCOLORS=ExGxFxdaCxDaDahbadacec
