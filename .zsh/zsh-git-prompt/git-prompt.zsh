@@ -30,8 +30,8 @@ autoload -U colors && colors
 : "${ZSH_GIT_PROMPT_AWK_CMD=""}"
 
 # Theming
-: "${ZSH_THEME_GIT_PROMPT_PREFIX="["}"
-: "${ZSH_THEME_GIT_PROMPT_SUFFIX="] "}"
+: "${ZSH_THEME_GIT_PROMPT_PREFIX="("}"
+: "${ZSH_THEME_GIT_PROMPT_SUFFIX=") "}"
 : "${ZSH_THEME_GIT_PROMPT_SEPARATOR="|"}"
 : "${ZSH_THEME_GIT_PROMPT_DETACHED="%{$fg_bold[cyan]%}:"}"
 : "${ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"}"
