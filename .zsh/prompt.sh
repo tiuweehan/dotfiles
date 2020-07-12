@@ -10,8 +10,23 @@ fi
 source ~/.zsh/zsh-git-prompt/zshrc.sh 
 
 # Set prompt (Use single quotes to reload PS1 before every prompt)
-# PS1="%(?.%F{green}√.%F{red}?%?)%f %B%{$fg[green]%}%n%{$fg[blue]%}@%{$fg[blue]%}%M %{$fg[cyan]%}%~%{$reset_color%} %# "
-PS1='%{$fg[cyan]%}[%D{%H:%M:%S}] %(?.%F{green}√.%F{red}?%?)%f %B%{$fg[green]%}%n %{$fg[blue]%}%~%{$reset_color%} $(git_super_status)%# '
+# Timestamp
+PS1='%{$fg[cyan]%}[%D{%H:%M:%S}]'
+
+# Status code 
+PS1="$PS1 "'%(?.%F{green}√.%F{red}?%?)%f'
+
+# Username
+PS1="$PS1 "'%B%{$fg[green]%}%n'
+
+# Directory
+PS1="$PS1 "'%{$fg[blue]%}%~%{$reset_color%}'
+
+# Git status
+PS1="$PS1 "'$(git_super_status)'
+
+# Prompt
+PS1="$PS1 "'%# '
 
 redraw_tmout() {
     case "$WIDGET" in
