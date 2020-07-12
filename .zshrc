@@ -1,9 +1,3 @@
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ] && [[ "$TERM_PROGRAM" =~ "Apple_Terminal" ]]; then
-  exec tmux
-fi
-
-TERM=screen-256color-bce
-
 DOT_FILES=(
   ~/.gitconfig
   ~/.gitignore
@@ -15,18 +9,9 @@ DOT_FILES=(
 )
 
 SOURCE_FILES=(
-  ~/.zsh/path
-  ~/.zsh/config
-  ~/.zsh/aliases
-  ~/.zsh/functions
-  ~/.zsh/syntax
-  ~/.zsh/prompt
-  ~/.zsh/keyboard
   ~/.localrc
-  ~/.zsh/path.sh
   ~/.zsh/config.sh
-  ~/.zsh/aliases.sh
-  ~/.zsh/functions.sh
+  ~/.zsh/utilities.sh
   ~/.zsh/syntax.sh
   ~/.zsh/prompt.sh
   ~/.zsh/keyboard.sh
