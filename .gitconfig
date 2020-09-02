@@ -27,6 +27,8 @@
   # Remove all git ignored files
   purge = clean -xdf
 
+  # Reorder the last 2 commits
+  reorder = "!GIT_SEQUENCE_EDITOR=\"sed -i -n 'h;1n;2p;g;p'\" git rebase -i HEAD~2"
 
 [help]
 
