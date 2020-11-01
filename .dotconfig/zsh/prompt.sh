@@ -15,6 +15,11 @@ PS1="$PS1 "'%(?.%F{green}√.%F{red}?%?)%f'
 # Username
 PS1="$PS1 "'%B%{$fg[green]%}%n'
 
+# Host
+if [ "$SHOW_HOSTNAME_IN_PROMPT" = "1" ]; then
+  PS1="$PS1"'%B%{$fg[green]%}@%M'
+fi
+
 # Directory
 PS1="$PS1 "'%{$fg[blue]%}%~%{$reset_color%}'
 

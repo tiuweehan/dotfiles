@@ -7,12 +7,12 @@ DOT_CONFIG_ZSH_DIR=$DOT_CONFIG_DIR/zsh
 
 SOURCE_FILES=(
   $DOT_ROOT_DIR/.localrc
+  $DOT_ROOT_DIR/.localrc.sh
   $DOT_CONFIG_ZSH_DIR/config.sh
   $DOT_CONFIG_ZSH_DIR/utilities.sh
   $DOT_CONFIG_ZSH_DIR/syntax.sh
   $DOT_CONFIG_ZSH_DIR/prompt.sh
   $DOT_CONFIG_ZSH_DIR/keyboard.sh
-  $DOT_ROOT_DIR/.localrc.sh
 ) 
 
 for file in $SOURCE_FILES; do
