@@ -42,7 +42,10 @@
 
 [user]
   name = Tiu Wee Han
-  email = deantiu56@gmail.com
+  email = contact@tiuweehan.com
 
 [github]
   user = tiuweehan
+
+[core]
+  excludesfile = ~/.gitignore_global
