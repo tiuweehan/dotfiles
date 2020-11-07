@@ -1,3 +1,7 @@
+[include]
+
+  path = ~/.gitconfig_local
+
 [alias]
 
   # View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -40,12 +44,8 @@
   # Include summaries of merged commits in newly created merge commit messages
   log = true
 
-[user]
-  name = Tiu Wee Han
-  email = contact@tiuweehan.com
-
-[github]
-  user = tiuweehan
-
 [core]
+
+  # Files to exclude globally
   excludesfile = ~/.gitignore_global
+
