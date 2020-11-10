@@ -1,99 +1,57 @@
+""" BASIC SETUP:
+
 " Don't try to be vi compatible
 set nocompatible
 
-" Helps force plugins to load correctly when it is turned back on below
-filetype off
+" Enable syntax highlighting and plugins (for netrw)
+syntax enable
+filetype plugin on
 
-" TODO: Load plugins here (pathogen or vundle)
 
-" Turn on syntax highlighting
-syntax on
 
-" For plugins to load correctly
-filetype plugin indent on
+""" FINDING FILES:
 
-" TODO: Pick a leader key
-" let mapleader = ","
+" Search down into subfolders
+" Provides tab completion for all file-related tasks
+set path+=**
 
-" Security
-set modelines=0
+" Display all matching files for tab completion
+set wildmenu
 
-" Show line numbers
-set number
+" NOW WE CAN
+" - Hit tab to :find by partial match
+" - Use * to make it fuzzy
+" - Use :b to autocomplete any open buffers
 
-" Show file stats
-set ruler
 
-" Blink cursor on error instead of beeping (grr)
-set visualbell
 
-" Encoding
-set encoding=utf-8
+""" TAG JUMPING:
 
-" Whitespace
-set wrap
-set formatoptions=tcqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set noshiftround
+" Create the `tags` file (may need to install ctags first)
+command! MakeTags !ctags -R .
 
-" Cursor motion
-set scrolloff=3
-set backspace=indent,eol,start
-set matchpairs+=<:> " use % to jump between pairs
-runtime! macros/matchit.vim
+" NOW WE CAN
+" - Use ^] to jump to tag under cursor
+" - Use g^] for ambiguous tags
+" - Use ^t to jump back up the tag stack
 
-" Move up/down editor lines
-nnoremap j gj
-nnoremap k gk
 
-" Allow hidden buffers
-set hidden
 
-" Rendering
-set ttyfast
+""" AUTOCOMPLETE:
 
-" Status bar
-set laststatus=2
+" NOW WE CAN
+" - ^x^n for just this file
+" - ^x^f for filenames (works with path trick)
+" - ^x^] for tags only
+" - ^n for anything specified by the 'complete' option
 
-" Last line
-set showmode
-set showcmd
 
-" Searching
-nnoremap / /\v
-vnoremap / /\v
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set showmatch
-map <leader><space> :let @/=''<cr> " clear search
 
-" Remap help key.
-inoremap <F1> <ESC>:set invfullscreen<CR>a
-nnoremap <F1> :set invfullscreen<CR>
-vnoremap <F1> :set invfullscreen<CR>
+""" FILE BROWSING:
 
-" Textmate holdouts
+" Tweaks for browsing
+let g:netrw_banner=0          " disable annoying banner
+let g:netrw_browse_split=4    " open in prior window
+let g:netrw_altv=1            " open splits to the right
+let g:netrw_liststyle=3       " tree view
 
-" Formatting
-map <leader>q gqip
-
-" Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
-
-" Color scheme (terminal)
-set t_Co=256
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-" in ~/.vim/colors/ and uncomment:
-" colorscheme solarized

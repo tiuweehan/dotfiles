@@ -6,11 +6,13 @@ source $DOT_CONFIG_ZSH_DIR/zsh-git-prompt/git-prompt.zsh
 ZSH_GIT_PROMPT_FORCE_BLANK=1
 
 # Set prompt (Use single quotes to reload PS1 before every prompt)
+PS1=""
+
 # Timestamp
-PS1='%{$fg[cyan]%}[%D{%H:%M:%S}]'
+# PS1='%{$fg[cyan]%}[%D{%H:%M:%S}]'
 
 # Status code 
-PS1="$PS1 "'%(?.%F{green}√.%F{red}?%?)%f'
+PS1="$PS1"'%(?.%F{green}√.%F{red}?%?)%f'
 
 # Username
 PS1="$PS1 "'%B%{$fg[green]%}%n'
@@ -53,19 +55,19 @@ function _reset-prompt-and-accept-line {
   zle reset-prompt
   zle .accept-line     # Note the . meaning the built-in accept-line.
 }
-zle -N accept-line _reset-prompt-and-accept-line
+# zle -N accept-line _reset-prompt-and-accept-line
 
-function preexec() {
-  __timer=$(($(print -P %D{%s%6.})/1000))
-}
+# function preexec() {
+#   __timer=$(($(print -P %D{%s%6.})/1000))
+# }
 
-function precmd() {
-  if [ $__timer ]; then
-    __now=$(($(print -P %D{%s%6.})/1000))
-    __elapsed=$(($__now-$__timer))
-
-    export RPROMPT="%F{yellow}${__elapsed}ms %{$reset_color%}"
-    unset __timer
-  fi
-}
+# function precmd() {
+#   if [ $__timer ]; then
+#     __now=$(($(print -P %D{%s%6.})/1000))
+#     __elapsed=$(($__now-$__timer))
+# 
+#     export RPROMPT="%F{yellow}${__elapsed}ms %{$reset_color%}"
+#     unset __timer
+#   fi
+# }
 
