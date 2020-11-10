@@ -55,3 +55,39 @@ let g:netrw_browse_split=4    " open in prior window
 let g:netrw_altv=1            " open splits to the right
 let g:netrw_liststyle=3       " tree view
 
+
+
+""" MISCELLANEOUS:
+
+" Blink cursor on error instead of beeping
+set visualbell
+
+" Encoding
+set encoding=utf-8
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+
+" Last line
+set showmode
+set showcmd
+
+" Show line numbers
+set number
+
+" Show file stats
+set ruler
+
+" Whitespace
+set wrap
+set formatoptions=tcqrn1
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+
