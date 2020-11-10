@@ -12,7 +12,8 @@ PS1=""
 # PS1='%{$fg[cyan]%}[%D{%H:%M:%S}]'
 
 # Status code 
-PS1="$PS1"'%(?.%F{green}√.%F{red}?%?)%f'
+# PS1="$PS1"'%(?.%F{green}√.%F{red}?%?)%f'
+PS1="$PS1"'%(?.%F{green}0.%F{red}%?)%f'
 
 # Username
 PS1="$PS1 "'%B%{$fg[green]%}%n'
@@ -57,17 +58,32 @@ function _reset-prompt-and-accept-line {
 }
 # zle -N accept-line _reset-prompt-and-accept-line
 
-# function preexec() {
-#   __timer=$(($(print -P %D{%s%6.})/1000))
-# }
+function displaytime {
+  local T=$1
+  local D=$((T/1000/1000/60/60/24))
+  local H=$((T/1000/1000/60/60%24))
+  local M=$((T/1000/1000/60%60))
+  local S=$((T/1000/1000%60))
+  local MS=$((T/1000%1000))
+  local US=$((T%1000))
+  (( $D > 0 )) && printf '%dd ' $D
+  (( $H > 0 )) && printf '%dh ' $H
+  (( $M > 0 )) && printf '%dm ' $M
+  # (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
+  printf '%d.%03ds' $S $MS
+}
 
-# function precmd() {
-#   if [ $__timer ]; then
-#     __now=$(($(print -P %D{%s%6.})/1000))
-#     __elapsed=$(($__now-$__timer))
-# 
-#     export RPROMPT="%F{yellow}${__elapsed}ms %{$reset_color%}"
-#     unset __timer
-#   fi
-# }
+function preexec() {
+  __timer=$(($(print -P %D{%s%6.})))
+}
+
+function precmd() {
+  if [ $__timer ]; then
+    __now=$(($(print -P %D{%s%6.})))
+    __elapsed=$(displaytime $(($__now-$__timer)))
+
+    export RPROMPT="%F{yellow}${__elapsed} %{$reset_color%}"
+    unset __timer
+  fi
+}
 
