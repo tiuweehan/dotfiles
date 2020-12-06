@@ -16,7 +16,7 @@ function  ff() {
         pattern="$2"
     fi
 
-    local destdir=$(fd "$pattern" "$searchdir" --color="always" | fzf --ansi --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
+    local destdir=$(fd "$pattern" "$searchdir" --hidden --color="always" | fzf --ansi --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
 
     if [ -z "$destdir" ]; then
       return 0
@@ -43,7 +43,7 @@ function  f() {
         pattern="$2"
     fi
 
-    local destdir=$(fd "$pattern" "$searchdir" --color="never" | fzf --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
+    local destdir=$(fd "$pattern" "$searchdir" --hidden --color="never" | fzf --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
 
     if [ -z "$destdir" ]; then
       return 0
@@ -70,7 +70,7 @@ function  vv() {
         pattern="$2"
     fi
 
-    fd "$pattern" "$searchdir" --color="always" --type f | fzf \
+    fd "$pattern" "$searchdir" --hidden --color="always" --type f | fzf \
       --ansi \
       --no-mouse \
       --preview 'bat --style=numbers --color=always --line-range :500 {}' \
@@ -93,7 +93,7 @@ function  v() {
         pattern="$2"
     fi
 
-    fd "$pattern" "$searchdir" --color="never" --type f | fzf \
+    fd "$pattern" "$searchdir" --hidden --color="never" --type f | fzf \
       --no-mouse \
       --preview 'bat --style=numbers --color=always --line-range :500 {}' \
       --bind 'enter:execute:vim {} < /dev/tty'
