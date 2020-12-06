@@ -19,7 +19,6 @@ endif
 
 let g:sublimemonokai_termcolors = 256 " does not support 16 color term right now.
 
-set background=dark
 hi clear
 
 if exists('syntax_on')
@@ -1119,3 +1118,5 @@ hi! link zshTypes    Keyword
 " * Semicolons in `if` blocks are `Keyword`ed in Sublime but not distinct in
 "     Vim
 " * Commands aren't distinct from builtins and keywords in Vim
+highlight Normal ctermbg=black
+highlight LineNr ctermbg=black
