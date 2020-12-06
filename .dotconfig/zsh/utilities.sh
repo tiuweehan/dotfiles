@@ -17,7 +17,7 @@ function  f() {
         pattern="$2"
     fi
 
-    local destdir=$(fd "$pattern" "$searchdir" --hidden --color="never" | fzf --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window 'wrap')
+    local destdir=$(fd "$pattern" "$searchdir" --hidden --color="never" | fzf --reverse --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window 'wrap')
 
     if [ -z "$destdir" ]; then
       return 0
@@ -45,6 +45,7 @@ function  v() {
     fi
 
     fd "$pattern" "$searchdir" --hidden --color="never" --type f | fzf \
+      --reverse \
       --no-mouse \
       --preview 'bat --style=numbers --color=always --line-range :500 {}' \
       --preview-window 'wrap' \
@@ -57,21 +58,48 @@ fi
 if command -v rg &> /dev/null; then
 # Ripgrep, fuzzy find files containing string
 function s() {
-  rg  \
-  --column \
-  --line-number \
-  --no-column \
-  --no-heading \
-  --fixed-strings \
-  --ignore-case \
-  --hidden \
-  --follow \
-  --glob '!.git/*' "$1" \
-  | awk -F  ":" '/1/ {start = $2<5 ? 0 : $2 - 5; end = $2 + 5; print $1 " " $2 " " start ":" end}' \
-  | fzf --preview 'bat --wrap character --color always {1} --highlight-line {2} --line-range {3}' --preview-window wrap
+    rg  \
+    --column \
+    --line-number \
+    --no-column \
+    --no-heading \
+    --fixed-strings \
+    --ignore-case \
+    --hidden \
+    --follow \
+    --glob '!.git/*' "$1" \
+    | awk -F  ":" '/1/ {start = $2<5 ? 0 : $2 - 5; end = $2 + 5; print $1 " " $2 " " start ":" end}' \
+    | fzf \
+      --reverse \
+      --preview 'bat --wrap character --color always {1} --highlight-line {2} --line-range {3}' \
+      --preview-window 'wrap'
+
   return 0
 }
 fi
+
+# Ripgrep, fuzzy find and vim files containing string
+function vs() {
+    rg  \
+    --column \
+    --line-number \
+    --no-column \
+    --no-heading \
+    --fixed-strings \
+    --ignore-case \
+    --hidden \
+    --follow \
+    --glob '!.git/*' "$1" \
+    | awk -F  ":" '/1/ {start = $2<5 ? 0 : $2 - 5; end = $2 + 5; print $1 " " $2 " " start ":" end}' \
+    | fzf \
+      --reverse \
+      --no-mouse \
+      --preview 'bat --wrap character --color always {1} --highlight-line {2} --line-range {3}' \
+      --preview-window 'wrap' \
+      --bind 'enter:execute:vim {1} +{2} < /dev/tty'
+
+  return 0
+}
 fi
 
 # tmux
