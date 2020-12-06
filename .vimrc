@@ -9,7 +9,8 @@ filetype plugin on
 
 " Color scheme
 try
-  colorscheme molokai
+  set termguicolors
+  colorscheme sublimemonokai
 catch
 endtry
 
