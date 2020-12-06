@@ -67,7 +67,7 @@ function s() {
     --ignore-case \
     --hidden \
     --follow \
-    --glob '!.git/*' "$1" \
+    --glob '!.git/*' "$1" 2>/dev/null \
     | awk -F  ":" '/1/ {start = $2<5 ? 0 : $2 - 5; end = $2 + 5; print $1 " " $2 " " start ":" end}' \
     | fzf \
       --reverse \
@@ -76,7 +76,6 @@ function s() {
 
   return 0
 }
-fi
 
 # Ripgrep, fuzzy find and vim files containing string
 function vs() {
@@ -100,6 +99,30 @@ function vs() {
 
   return 0
 }
+fi
+
+if command -v rga &> /dev/null; then
+# Ripgrep all, fuzzy find files containing string
+function s() {
+    rga  \
+    --column \
+    --line-number \
+    --no-column \
+    --no-heading \
+    --fixed-strings \
+    --ignore-case \
+    --hidden \
+    --follow \
+    --glob '!.git/*' "$1" 2>/dev/null \
+    | awk -F  ":" '/1/ {start = $2<5 ? 0 : $2 - 5; end = $2 + 5; print $1 " " $2 " " start ":" end}' \
+    | fzf \
+      --reverse \
+      --preview 'bat --wrap character --color always {1} --highlight-line {2} --line-range {3}' \
+      --preview-window 'wrap'
+
+  return 0
+}
+fi
 fi
 
 # tmux
