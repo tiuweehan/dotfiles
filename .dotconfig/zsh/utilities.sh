@@ -3,6 +3,33 @@
 # fzf fd
 if command -v fzf &> /dev/null && command -v fd &> /dev/null; then
 ### Fuzzy find and cd
+function  ff() {
+    local searchdir=.
+
+    if [ ! -z "$1" ]; then
+        searchdir="$1"
+    fi
+
+    local pattern=.
+
+    if [ ! -z "$2" ]; then
+        pattern="$2"
+    fi
+
+    local destdir=$(fd "$pattern" "$searchdir" --color="always" | fzf --ansi --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
+
+    if [ -z "$destdir" ]; then
+      return 0
+    fi
+
+    if [ -f "$destdir" ]; then
+        destdir="$(dirname $destdir)"
+    fi
+
+    cd $destdir
+}
+
+### Fast fuzzy find (without color) and cd
 function  f() {
     local searchdir=.
 
@@ -16,7 +43,7 @@ function  f() {
         pattern="$2"
     fi
 
-    local destdir=$(fd "$pattern" "$searchdir" | fzf --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
+    local destdir=$(fd "$pattern" "$searchdir" --color="never" | fzf --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
 
     if [ -z "$destdir" ]; then
       return 0
@@ -30,6 +57,29 @@ function  f() {
 }
 
 ### Fuzzy find and vim
+function  vv() {
+    local searchdir=.
+
+    if [ ! -z "$1" ]; then
+        searchdir="$1"
+    fi
+
+    local pattern=.
+
+    if [ ! -z "$2" ]; then
+        pattern="$2"
+    fi
+
+    fd "$pattern" "$searchdir" --color="always" --type f | fzf \
+      --ansi \
+      --no-mouse \
+      --preview 'bat --style=numbers --color=always --line-range :500 {}' \
+      --bind 'enter:execute:vim {} < /dev/tty'
+
+    return 0
+}
+
+### Fast fuzzy find (without color) and vim
 function  v() {
     local searchdir=.
 
@@ -43,7 +93,7 @@ function  v() {
         pattern="$2"
     fi
 
-    fd "$pattern" "$searchdir" --type f | fzf \
+    fd "$pattern" "$searchdir" --color="never" --type f | fzf \
       --no-mouse \
       --preview 'bat --style=numbers --color=always --line-range :500 {}' \
       --bind 'enter:execute:vim {} < /dev/tty'
