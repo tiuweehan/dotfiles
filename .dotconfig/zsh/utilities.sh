@@ -1,5 +1,56 @@
 # Utility
 
+# fzf fd
+if command -v fzf &> /dev/null && command -v fd &> /dev/null; then
+### Fuzzy find and cd
+function  f() {
+    local searchdir=.
+
+    if [ ! -z "$1" ]; then
+        searchdir="$1"
+    fi
+
+    local pattern=.
+
+    if [ ! -z "$2" ]; then
+        pattern="$2"
+    fi
+
+    local destdir=$(fd "$pattern" "$searchdir" | fzf --preview 'bat --style=numbers --color=always --line-range :500 {}')
+
+    if [ -z "$destdir" ]; then
+      return 0
+    fi
+
+    if [ -f "$destdir" ]; then
+        destdir="$(dirname $destdir)"
+    fi
+
+    cd $destdir
+}
+
+### Fuzzy find and vim
+function  v() {
+    local searchdir=.
+
+    if [ ! -z "$1" ]; then
+        searchdir="$1"
+    fi
+
+    local pattern=.
+
+    if [ ! -z "$2" ]; then
+        pattern="$2"
+    fi
+
+    fd "$pattern" "$searchdir" --type f | fzf \
+      --preview 'bat --style=numbers --color=always --line-range :500 {}' \
+      --bind 'enter:execute:vim {} < /dev/tty'
+
+    return 0
+}
+fi
+
 # tmux
 if command -v tmux &> /dev/null; then
 ### Attach tmux session
@@ -18,7 +69,7 @@ if command -v docker &> /dev/null; then
 dex() { docker exec -it $1 /bin/bash }
 
 ### Remove all Docker containers
-drm() { docker rm -f $(docker ps -a -q) }
+drm() { docker rm -f "$(docker ps -a -q)" }
 fi
 
 # misc

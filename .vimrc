@@ -7,7 +7,11 @@ set nocompatible
 syntax enable
 filetype plugin on
 
-
+" Color scheme
+try
+  colorscheme molokai
+catch
+endtry
 
 """ FINDING FILES:
 
