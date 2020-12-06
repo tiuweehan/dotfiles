@@ -1,35 +1,9 @@
 # Utility
 
 # fzf fd
-if command -v fzf &> /dev/null && command -v fd &> /dev/null; then
-### Fuzzy find and cd
-function  ff() {
-    local searchdir=.
-
-    if [ ! -z "$1" ]; then
-        searchdir="$1"
-    fi
-
-    local pattern=.
-
-    if [ ! -z "$2" ]; then
-        pattern="$2"
-    fi
-
-    local destdir=$(fd "$pattern" "$searchdir" --hidden --color="always" | fzf --ansi --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
-
-    if [ -z "$destdir" ]; then
-      return 0
-    fi
-
-    if [ -f "$destdir" ]; then
-        destdir="$(dirname $destdir)"
-    fi
-
-    cd $destdir
-}
-
-### Fast fuzzy find (without color) and cd
+if command -v fzf &> /dev/null; then
+if command -v fd &> /dev/null; then
+### Fast fuzzy find and cd
 function  f() {
     local searchdir=.
 
@@ -43,7 +17,7 @@ function  f() {
         pattern="$2"
     fi
 
-    local destdir=$(fd "$pattern" "$searchdir" --hidden --color="never" | fzf --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}')
+    local destdir=$(fd "$pattern" "$searchdir" --hidden --color="never" | fzf --no-mouse --preview 'bat --style=numbers --color=always --line-range :500 {}' --preview-window 'wrap')
 
     if [ -z "$destdir" ]; then
       return 0
@@ -56,30 +30,7 @@ function  f() {
     cd $destdir
 }
 
-### Fuzzy find and vim
-function  vv() {
-    local searchdir=.
-
-    if [ ! -z "$1" ]; then
-        searchdir="$1"
-    fi
-
-    local pattern=.
-
-    if [ ! -z "$2" ]; then
-        pattern="$2"
-    fi
-
-    fd "$pattern" "$searchdir" --hidden --color="always" --type f | fzf \
-      --ansi \
-      --no-mouse \
-      --preview 'bat --style=numbers --color=always --line-range :500 {}' \
-      --bind 'enter:execute:vim {} < /dev/tty'
-
-    return 0
-}
-
-### Fast fuzzy find (without color) and vim
+### Fast fuzzy find and vim
 function  v() {
     local searchdir=.
 
@@ -96,10 +47,31 @@ function  v() {
     fd "$pattern" "$searchdir" --hidden --color="never" --type f | fzf \
       --no-mouse \
       --preview 'bat --style=numbers --color=always --line-range :500 {}' \
+      --preview-window 'wrap' \
       --bind 'enter:execute:vim {} < /dev/tty'
 
     return 0
 }
+fi
+
+if command -v rg &> /dev/null; then
+# Ripgrep, fuzzy find files containing string
+function s() {
+  rg  \
+  --column \
+  --line-number \
+  --no-column \
+  --no-heading \
+  --fixed-strings \
+  --ignore-case \
+  --hidden \
+  --follow \
+  --glob '!.git/*' "$1" \
+  | awk -F  ":" '/1/ {start = $2<5 ? 0 : $2 - 5; end = $2 + 5; print $1 " " $2 " " start ":" end}' \
+  | fzf --preview 'bat --wrap character --color always {1} --highlight-line {2} --line-range {3}' --preview-window wrap
+  return 0
+}
+fi
 fi
 
 # tmux
