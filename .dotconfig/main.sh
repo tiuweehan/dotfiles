@@ -5,7 +5,9 @@ DOT_CONFIG_DIR=$DOT_ROOT_DIR/.dotconfig
 DOT_FILES=(
   $DOT_ROOT_DIR/.gitconfig
   $DOT_ROOT_DIR/.gitignore
+  $DOT_ROOT_DIR/.gitignore_global
   $DOT_ROOT_DIR/.tmux.conf
+  $DOT_ROOT_DIR/.vim
   $DOT_ROOT_DIR/.vimrc
   $DOT_ROOT_DIR/.zshrc
   $DOT_CONFIG_DIR/
