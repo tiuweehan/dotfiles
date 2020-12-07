@@ -32,8 +32,10 @@
 : ${ZSH_HIGHLIGHT_STYLES[default]:=none}
 : ${ZSH_HIGHLIGHT_STYLES[unknown-token]:=fg=red,bold}
 : ${ZSH_HIGHLIGHT_STYLES[reserved-word]:=fg=yellow}
-: ${ZSH_HIGHLIGHT_STYLES[suffix-alias]:=fg=green,underline}
-: ${ZSH_HIGHLIGHT_STYLES[precommand]:=fg=green,underline}
+# : ${ZSH_HIGHLIGHT_STYLES[suffix-alias]:=fg=green,underline}
+: ${ZSH_HIGHLIGHT_STYLES[suffix-alias]:=fg=cyan,underline}
+# : ${ZSH_HIGHLIGHT_STYLES[precommand]:=fg=green,underline}
+: ${ZSH_HIGHLIGHT_STYLES[precommand]:=fg=cyan,underline}
 : ${ZSH_HIGHLIGHT_STYLES[commandseparator]:=none}
 : ${ZSH_HIGHLIGHT_STYLES[path]:=underline}
 : ${ZSH_HIGHLIGHT_STYLES[path_pathseparator]:=}
@@ -59,7 +61,8 @@
 : ${ZSH_HIGHLIGHT_STYLES[redirection]:=none}
 : ${ZSH_HIGHLIGHT_STYLES[comment]:=fg=black,bold}
 : ${ZSH_HIGHLIGHT_STYLES[named-fd]:=none}
-: ${ZSH_HIGHLIGHT_STYLES[arg0]:=fg=green}
+# : ${ZSH_HIGHLIGHT_STYLES[arg0]:=fg=green}
+: ${ZSH_HIGHLIGHT_STYLES[arg0]:=fg=cyan}
 
 # Whether the highlighter should be called or not.
 _zsh_highlight_highlighter_main_predicate()

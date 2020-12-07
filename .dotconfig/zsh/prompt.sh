@@ -13,14 +13,14 @@ PS1=""
 
 # Status code 
 # PS1="$PS1"'%(?.%F{green}√.%F{red}?%?)%f'
-PS1="$PS1"'%(?.%F{green}0.%F{red}%?)%f'
+PS1="$PS1"'%(?.%F{cyan}0.%F{red}%?)%f'
 
 # Username
-PS1="$PS1 "'%B%{$fg[green]%}%n'
+PS1="$PS1 "'%B%{$fg[cyan]%}%n'
 
 # Host
 if [ "$SHOW_HOSTNAME_IN_PROMPT" = "1" ]; then
-  PS1="$PS1"'%B%{$fg[green]%}@%M'
+  PS1="$PS1"'%{$fg[cyan]%}@%M'
 fi
 
 # Directory
