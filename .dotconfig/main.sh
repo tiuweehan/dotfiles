@@ -37,9 +37,12 @@ _dot-destruct() {
   fi
 
   # Check if should delete .localrc
-  read "response?Do you want to delete .localrc? [yY/n] "
+  read "response?Do you want to delete .localrc and .localrc.sh? [yY/n] "
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-    rm -rf $DOT_ROOT_DIR/.localrc
+    read "response?Are you sure? This action is irreversible. [yY/n] "
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+      rm -rf $DOT_ROOT_DIR/.localrc $DOT_ROOT_DIR/.localrc.sh
+    fi
   fi
 
   # Remove all dotfiles
