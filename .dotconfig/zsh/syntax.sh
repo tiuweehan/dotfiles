@@ -1,6 +1,5 @@
 source $DOT_CONFIG_ZSH_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $DOT_CONFIG_ZSH_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $DOT_CONFIG_ZSH_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 export CLICOLOR=1
