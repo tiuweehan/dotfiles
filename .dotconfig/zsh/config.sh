@@ -17,6 +17,9 @@ autoload -U compinit
 
 zstyle ':completion:*' menu select
 
+# Prevent URLs from auto complete
+zstyle ':completion:*:open:argument*' tag-order - '! urls'
+
 zmodload zsh/complist
 
 compinit
