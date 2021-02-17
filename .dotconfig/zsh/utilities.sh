@@ -58,6 +58,10 @@ fi
 if command -v rg &> /dev/null; then
 # Ripgrep, fuzzy find files containing string
 function s() {
+    if [[ $# -eq 0 ]]; then
+        return 1
+    fi
+
     rg  \
     --column \
     --line-number \
@@ -104,6 +108,10 @@ fi
 if command -v rga &> /dev/null; then
 # Ripgrep all, fuzzy find files containing string
 function s() {
+    if [[ $# -eq 0 ]]; then
+        return 1
+    fi
+
     rga  \
     --column \
     --line-number \
