@@ -87,8 +87,12 @@ set number
 " Show file stats
 set ruler
 
-" Whitespace
+" Wrapping
 set wrap
+set whichwrap+=h,l,<,>,[,]
+au VimEnter * if &diff | execute 'windo set wrap' | endif " Set wrap for vimdiff https://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
+
+" Whitespace
 set formatoptions=tcqrn1
 set tabstop=2
 set shiftwidth=2
