@@ -131,7 +131,7 @@ parser.add_argument('-b', '--all-bold',
                     action='store_true',
                     help='use all bold characters')
 parser.add_argument('-c', '--color',
-                    default='green',
+                    default='cyan',
                     help='one of: green (default), red, blue, white, yellow, \
                           cyan, magenta, black',
                     type=str)
