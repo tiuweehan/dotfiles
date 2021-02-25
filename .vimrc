@@ -109,3 +109,6 @@ imap <C-e> <ESC>A
 inoremap <M-f> <ESC><Space>Wi
 inoremap <M-b> <Esc>Bi
 inoremap <M-d> <ESC>cW
+map <Esc>[1;3C w
+map <Esc>[1;3D b
+

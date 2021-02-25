@@ -77,7 +77,9 @@ function preexec() {
   __timer=$(($(print -P %D{%s%6.})))
 }
 
+echo -ne '\e[6 q' # Use I beam shape cursor on startup.
 function precmd() {
+  echo -ne '\e[6 q'
   if [ $__timer ]; then
     __now=$(($(print -P %D{%s%6.})))
     __elapsed=$(displaytime $(($__now-$__timer)))
