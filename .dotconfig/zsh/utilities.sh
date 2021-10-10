@@ -157,3 +157,5 @@ fi
 # misc
 join_by() { local IFS="$1"; shift; echo "$*"; }
 
+# rsymc
+alias rsyncf='rsync -rltDvPaEAX -times --crtimes'
