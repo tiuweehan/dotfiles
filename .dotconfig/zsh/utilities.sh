@@ -159,3 +159,7 @@ join_by() { local IFS="$1"; shift; echo "$*"; }
 
 # rsymc
 alias rsyncf='rsync -rltDvPaEAX -times --crtimes'
+
+# kill detached mosh servers
+alias moshk='kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)'
+
