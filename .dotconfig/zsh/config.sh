@@ -9,8 +9,10 @@ SAVEHIST=10000
 
 HISTFILE=~/.cache/zsh/history
 
-
-#
+if [ "$USE_ZSH_AUTOCOMPLETE" = "1" ]; then
+setopt autocd
+source $DOT_CONFIG_ZSH_DIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+else
 # Basic auto/tab complete:
 
 autoload -U compinit
@@ -25,7 +27,9 @@ zmodload zsh/complist
 compinit
 
 _comp_options+=(globdots)		# Include hidden files.
+fi
 
 # Default Editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
+

@@ -13,18 +13,22 @@ PS1=""
 
 # Status code 
 # PS1="$PS1"'%(?.%F{green}√.%F{red}?%?)%f'
-PS1="$PS1"'%(?.%F{cyan}0.%F{red}%?)%f'
+PROMPT_STATUS_CODE_COLOR=${STATUS_CODE_COLOR:-"cyan"}
+PS1="$PS1"'%(?.%F{'"$STATUS_CODE_COLOR"'}0.%F{red}%?)%f'
 
 # Username
-PS1="$PS1 "'%B%{$fg[cyan]%}%n'
+PROMPT_USERNAME_COLOR=${PROMPT_USERNAME_COLOR:-"cyan"}
+PS1="$PS1 "'%B%{$fg['"$PROMPT_USERNAME_COLOR"']%}%n'
 
 # Host
 if [ "$SHOW_HOSTNAME_IN_PROMPT" = "1" ]; then
-  PS1="$PS1"'%{$fg[cyan]%}@%M'
+  PROMPT_HOSTNAME_COLOR=${PROMPT_HOSTNAME_COLOR:-"cyan"}
+  PS1="$PS1"'%{$fg['"$PROMPT_HOSTNAME_COLOR"']%}@%M'
 fi
 
 # Directory
-PS1="$PS1 "'%{$fg[blue]%}%~%{$reset_color%}'
+PROMPT_DIRECTORY_COLOR=${PROMPT_DIRECTORY_COLOR:-"blue"}
+PS1="$PS1 "'%{$fg['"$PROMPT_DIRECTORY_COLOR"']%}%~%{$reset_color%}'
 
 # Git status
 PS1="$PS1 "'$(gitprompt)'
