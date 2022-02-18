@@ -13,8 +13,8 @@ PS1=""
 
 # Status code 
 # PS1="$PS1"'%(?.%F{green}√.%F{red}?%?)%f'
-PROMPT_STATUS_CODE_COLOR=${STATUS_CODE_COLOR:-"cyan"}
-PS1="$PS1"'%(?.%F{'"$STATUS_CODE_COLOR"'}0.%F{red}%?)%f'
+PROMPT_STATUS_CODE_COLOR=${PROMPT_STATUS_CODE_COLOR:-"cyan"}
+PS1="$PS1"'%(?.%F{'"$PROMPT_STATUS_CODE_COLOR"'}0.%F{red}%?)%f'
 
 # Username
 PROMPT_USERNAME_COLOR=${PROMPT_USERNAME_COLOR:-"cyan"}
